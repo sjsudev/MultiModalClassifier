@@ -1,6 +1,12 @@
 # MultiModalClassifier
 This is a project repo for multi-modal deep learning classifier with popular models from Tensorflow and Pytorch. The goal of these baseline models is to provide a template to build on and can be a starting point for any new ideas, applications. If you want to learn basics of ML and DL, please refer this repo: https://github.com/lkk688/DeepDataMiningLearning.
 
+# Bonus Work 2 by Devansh Modi
+
+### Instructions for Setup
+
+- Get flower data set using the dataset tools ~ `getflowertraintestdataset.py`
+
 # Package setup
 Install this project in development mode
 ```bash
