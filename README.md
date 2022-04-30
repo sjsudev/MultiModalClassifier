@@ -6,8 +6,16 @@ This is a project repo for multi-modal deep learning classifier with popular mod
 ### Task 1 - Intel PyTorch Acceleration
 
 - First step is to install the Intel Extension for PyTorch
-  python -m pip install intel_extension_for_pytorch
+  git clone --recursive https://github.com/intel/intel-extension-for-pytorch
+  cd intel-extension-for-pytorch
+  git checkout v1.11.0
 
+  # if you are updating an existing checkout
+  git submodule sync
+  git submodule update --init --recursive
+
+  python setup.py install
+  
 - Follow code changes were made for Intel Extension Acceleration
 
   import intel_extension_for_pytorch as ipex
@@ -24,6 +32,37 @@ Here is the first epoch iteration and the accuracy achieved after 20 minutes.
   ----------
   train Loss: 1.7236 Acc: 0.3295
   val Loss: 1.4562 Acc: 0.4534
+
+  Epoch 1/14
+  ----------
+  train Loss: 1.3543 Acc: 0.5077
+  val Loss: 1.2355 Acc: 0.5581
+
+  Epoch 2/14
+  ----------
+  train Loss: 1.1905 Acc: 0.5802
+  val Loss: 1.1523 Acc: 0.5958
+
+  Epoch 3/14
+  ----------
+  train Loss: 1.0786 Acc: 0.6221
+  val Loss: 1.1125 Acc: 0.6215
+
+  Epoch 4/14
+  ----------
+  train Loss: 1.0011 Acc: 0.6514
+  val Loss: 1.0101 Acc: 0.6541
+
+  Epoch 5/14
+  ----------
+  train Loss: 0.9268 Acc: 0.6802
+  val Loss: 1.0527 Acc: 0.6346
+
+  Epoch 6/14
+  ----------
+
+- Now I will enable the Intel extension for PyTorch.
+
 
 ### Instructions for Setup
 
