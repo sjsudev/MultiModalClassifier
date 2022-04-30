@@ -10,12 +10,11 @@ This is a project repo for multi-modal deep learning classifier with popular mod
   cd intel-extension-for-pytorch
   git checkout v1.11.0
 
-  # if you are updating an existing checkout
   git submodule sync
   git submodule update --init --recursive
 
   python setup.py install
-  
+
 - Follow code changes were made for Intel Extension Acceleration
 
   import intel_extension_for_pytorch as ipex
