@@ -27,7 +27,7 @@ def visbatchimage(images, labels, classes):
     fig = plt.figure(figsize=(25, 4))
     # display 20 images
     for idx in np.arange(20):
-        ax = fig.add_subplot(2, 20/2, idx+1, xticks=[], yticks=[])
+        ax = fig.add_subplot(2, int(20/2), idx+1, xticks=[], yticks=[])
         imshowhelper(images[idx])
         ax.set_title(classes[labels[idx]])
     fig.savefig('./outputs/torchonebatchimage.png')

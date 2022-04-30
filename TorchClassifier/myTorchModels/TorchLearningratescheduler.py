@@ -4,6 +4,7 @@ from torch.optim import lr_scheduler
 
 #https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
 def setupLearningratescheduler(name, optimizer, EPOCHS, STEPS_PER_EPOCH):
+    scheduler = None
     if name =='StepLR':
         # Decay LR by a factor of 0.1 every 7 epochs
         scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
@@ -19,3 +20,5 @@ def setupLearningratescheduler(name, optimizer, EPOCHS, STEPS_PER_EPOCH):
         scheduler = lr_scheduler.OneCycleLR(optimizer,
                                     max_lr = MAX_LRS,
                                     total_steps = TOTAL_STEPS)
+
+    return scheduler

@@ -3,26 +3,37 @@ This is a project repo for multi-modal deep learning classifier with popular mod
 
 # Bonus Work 2 by Devansh Modi
 
+### Task 1 - Intel PyTorch Acceleration
+
+- First step is to install the Intel Extension for PyTorch
+  python -m pip install intel_extension_for_pytorch
+
+- Follow code changes were made for Intel Extension Acceleration
+
+  import intel_extension_for_pytorch as ipex
+  ...
+  model = ipex.optimize(model)
+  ...
+
+Without any changes, the model is taking a long time to train.
+
+Here is the first epoch iteration and the accuracy achieved after 20 minutes.
+
+  The model has 23272266 trainable parameters
+  Epoch 0/14
+  ----------
+  train Loss: 1.7236 Acc: 0.3295
+  val Loss: 1.4562 Acc: 0.4534
+
 ### Instructions for Setup
 
 - Get flower data set using the dataset tools ~ `getflowertraintestdataset.py`
+ i.e `https://s3.amazonaws.com/video.udacity-data.com/topher/2018/September/5baa60a0_flower-photos/flower-photos.zip`
 
-# Package setup
-Install this project in development mode
+- Install this project in development mode
 ```bash
-(venv38) MyRepo/MultiModalClassifier$ python setup.py develop
-```
-After the installation, the package "MultimodalClassifier==0.0.1" is installed in your virtual environment. You can check the import
-```bash
->>> import TFClassifier
->>> import TFClassifier.Datasetutil
->>> import TFClassifier.Datasetutil.Visutil
-```
+  $ python setup.py develop
 
-If you went to uninstall the package, perform the following step
-```bash
-(venv38) lkk@cmpeengr276-All-Series:~/Developer/MyRepo/MultiModalClassifier$ python setup.py develop --uninstall
-```
 
 # Code organization
 * [DatasetTools](./DatasetTools): common tools and code scripts for processing datasets

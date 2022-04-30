@@ -38,7 +38,7 @@ parser.add_argument('--data_name', type=str, default='CIFAR10',
                     help='data name: hymenoptera_data, CIFAR10, MNIST, flower_photos')
 parser.add_argument('--data_type', default='torchvisiondataset', choices=['trainvalfolder', 'traintestfolder', 'torchvisiondataset'],
                     help='the type of data') 
-parser.add_argument('--data_path', type=str, default='./../ImageClassificationData',
+parser.add_argument('--data_path', type=str, default='../ImageClassificationData',
                     help='path to get data') #/Developer/MyRepo/ImageClassificationData
 parser.add_argument('--img_height', type=int, default=28,
                     help='resize to img height, 224')
@@ -59,7 +59,7 @@ parser.add_argument('--batchsize', type=int, default=32,
                     help='batch size')
 parser.add_argument('--epochs', type=int, default=15,
                     help='epochs')
-parser.add_argument('--GPU', type=bool, default=True,
+parser.add_argument('--GPU', type=bool, default=False,
                     help='use GPU')
 # parser.add_argument('--TPU', type=bool, default=False,
 #                     help='use TPU')
