@@ -17,6 +17,8 @@ import random
 import PIL
 import PIL.Image
 
+import intel_extension_for_pytorch as ipex
+
 print(torch.__version__)
 
 from TorchClassifier.Datasetutil.Visutil import imshow, vistestresult
@@ -223,6 +225,8 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     model_ft = model_ft.to(device)
+    model = ipex.optimize(model)
+    
     criterion = criterion.to(device)
 
     # Observe that all parameters are being optimized, 
