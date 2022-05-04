@@ -225,7 +225,6 @@ def main():
     criterion = nn.CrossEntropyLoss()
 
     model_ft = model_ft.to(device)
-    model_ft = ipex.optimize(model_ft)
     
     criterion = criterion.to(device)
 
@@ -233,6 +232,10 @@ def main():
     optimizer_ft=gettorchoptim(args.optimizer, model_ft) #'Adam'
     # optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
     # optimizer_ft = optim.Adam(model_ft.parameters())
+
+    # Intel Extension for PyTorch 
+    model_ft = ipex.optimize(model_ft, optimizer = optimizer_ft)
+
 
     # # Decay LR by a factor of 0.1 every 7 epochs
     # exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
