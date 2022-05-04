@@ -24,7 +24,14 @@ This is a project repo for multi-modal deep learning classifier with popular mod
     ...
     model = ipex.optimize(model)
     ...
-```
+    ```
+
+- Install other dependencies
+
+  ```
+  pip3 install torch torchvision
+  ```
+
 Without any changes, the model is taking a long time to train.
 
 Here is the first epoch iteration and the accuracy achieved after 20 minutes.
@@ -63,7 +70,18 @@ Here is the first epoch iteration and the accuracy achieved after 20 minutes.
   Epoch 6/14
   ----------
 
-- Now I will enable the Intel extension for PyTorch.
+
+### Task 2 - Rest API
+
+Code is added to the ~/rest-api folder.
+
+The flask app serves the MNIST dataset prediction model inference via REST API calls.
+
+Usage
+
+`@app.route('/predict', methods=['POST'])`
+
+`POST /predict`
 
 
 ### Instructions for Setup
@@ -74,6 +92,10 @@ Here is the first epoch iteration and the accuracy achieved after 20 minutes.
 - Install this project in development mode
 ```bash
   $ python setup.py develop
+
+### Screenshots
+
+![ec2.png]
 
 
 # Code organization

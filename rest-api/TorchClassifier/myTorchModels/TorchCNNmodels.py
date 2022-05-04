@@ -355,7 +355,7 @@ class AlexNet(nn.Module):
 
 def create_AlexNet(numclasses, img_shape):
     #for MNIST dataset
-    INPUT_DIM = img_shape[1]*img_shape[2]#28 * 28
+    INPUT_DIM = img_shape[1]*img_shape[2] #28 * 28
     OUTPUT_DIM = numclasses
     model = AlexNet(OUTPUT_DIM)
     print(model)

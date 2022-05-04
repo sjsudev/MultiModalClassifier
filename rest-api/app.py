@@ -1,18 +1,40 @@
+from __future__ import print_function, division
 from flask import Flask, jsonify
+from TorchClassifier.myTorchEvaluator import get_predictions
+from TorchClassifier.Datasetutil.Torchdatasetutil import loadTorchdataset
+from TorchClassifier.myTorchModels.TorchCNNmodels import createTorchCNNmodel
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.optim import lr_scheduler
+import numpy as np
+import torchvision
+from torchvision import datasets, models, transforms
+import os
+
+# Initialize Flask App
 app = Flask(__name__)
+model = None 
+device = None
 
-# Make sure to pass `pretrained` as `True` to use the pretrained weights:
-model = models.densenet121(pretrained=True)
-# Since we are using our model only for inference, switch to `eval` mode:
-model.eval()
+dataloaders, dataset_sizes, class_names, img_shape = loadTorchdataset('MNIST', 'torchvisiondataset', './../ImageClassificationData', 28, 28, 32)
 
+numclasses = len(class_names)
+model_ft = createTorchCNNmodel('mlpmodel1', numclasses, img_shape)
 
-def get_prediction(image_bytes):
-    tensor = transform_image(image_bytes=image_bytes)
-    outputs = model.forward(tensor)
-    _, y_hat = outputs.max(1)
-    return y_hat
+modelpath=os.path.join('./outputs/', 'model_best.pt')
+model_ft.load_state_dict(torch.load(modelpath))
+
+model_ft = model_ft.to(device)
+
+criterion = nn.CrossEntropyLoss()
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    return jsonify({'class_id': 'IMAGE_NET_XXX', 'class_name': 'Cat'})
+    images, labels, probs = get_predictions(model_ft, dataloaders['test'], device)
+
+    return jsonify({'labels': labels})
+
+if __name__ == '__main__':
+    app.run()
