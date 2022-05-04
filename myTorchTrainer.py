@@ -234,7 +234,7 @@ def main():
     # optimizer_ft = optim.Adam(model_ft.parameters())
 
     # Intel Extension for PyTorch 
-    model_ft = ipex.optimize(model_ft, optimizer = optimizer_ft)
+    model_ft, optimizer_ft = ipex.optimize(model_ft, optimizer = optimizer_ft)
 
 
     # # Decay LR by a factor of 0.1 every 7 epochs
